@@ -7,14 +7,32 @@
 
 import UIKit
 import CoreData
+import Firebase
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    lazy var authController: Auth = {
+        return Auth.auth()
+    }()
+    var window: UIWindow?
+    var databaseController: DatabaseProtocol?
 
+    func application(_ application: UIApplication,didFinishLaunchingWithOptions launchOptions:[UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
 
+        databaseController = FirebaseController()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if authController.currentUser != nil {
+            
+            do {
+                try authController.signOut()
+            }
+            catch{
+                print("Cant Sign out")
+            }
+            
+        }
         return true
     }
 

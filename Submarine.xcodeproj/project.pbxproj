@@ -7,25 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */; };
+		153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */; };
+		15A71D4E280BF977008E4A19 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A71D4D280BF977008E4A19 /* FirebaseController.swift */; };
+		15A71D50281B986F008E4A19 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A71D4F281B986F008E4A19 /* User.swift */; };
+		15B4D0912823B4070013D1B7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0902823B4070013D1B7 /* MulticastDelegate.swift */; };
+		15B4D0932823B4AA0013D1B7 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0922823B4AA0013D1B7 /* DatabaseProtocol.swift */; };
+		15B4D0952824A1520013D1B7 /* AddSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0942824A1520013D1B7 /* AddSubscriptionViewController.swift */; };
+		15B4D0972824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0962824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift */; };
+		15B4D0992824B4BE0013D1B7 /* IconAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0982824B4BE0013D1B7 /* IconAPIViewController.swift */; };
+		15B4D09B2824CB140013D1B7 /* DetailSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D09A2824CB140013D1B7 /* DetailSubscriptionViewController.swift */; };
+		15BD65EF280BE818008998A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15BD65EE280BE817008998A1 /* GoogleService-Info.plist */; };
 		15DD4501280A70090048F21A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD4500280A70090048F21A /* AppDelegate.swift */; };
 		15DD4503280A70090048F21A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD4502280A70090048F21A /* SceneDelegate.swift */; };
-		15DD4505280A70090048F21A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD4504280A70090048F21A /* ViewController.swift */; };
 		15DD4508280A70090048F21A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15DD4506280A70090048F21A /* Main.storyboard */; };
 		15DD450B280A70090048F21A /* Submarine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15DD4509280A70090048F21A /* Submarine.xcdatamodeld */; };
 		15DD450D280A70100048F21A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DD450C280A70100048F21A /* Assets.xcassets */; };
 		15DD4510280A70100048F21A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15DD450E280A70100048F21A /* LaunchScreen.storyboard */; };
+		15E2F28C280AB8EE006A4AB9 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2F28B280AB8EE006A4AB9 /* Subscription.swift */; };
+		15E2F295280B9EB4006A4AB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */; };
+		15EEC666280AAF4A00C3464D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC665280AAF4A00C3464D /* FirebaseAuth */; };
+		15EEC668280AAF4B00C3464D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC667280AAF4B00C3464D /* FirebaseFirestore */; };
+		15EEC66A280AAF4B00C3464D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC669280AAF4B00C3464D /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
+		153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customSubscriptionTableViewCell.swift; sourceTree = "<group>"; };
+		15A71D4D280BF977008E4A19 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		15A71D4F281B986F008E4A19 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		15B4D0902823B4070013D1B7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		15B4D0922823B4AA0013D1B7 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		15B4D0942824A1520013D1B7 /* AddSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionViewController.swift; sourceTree = "<group>"; };
+		15B4D0962824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewControllerDisplayMessage.swift; path = ViewControllers/UIViewControllerDisplayMessage.swift; sourceTree = "<group>"; };
+		15B4D0982824B4BE0013D1B7 /* IconAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconAPIViewController.swift; sourceTree = "<group>"; };
+		15B4D09A2824CB140013D1B7 /* DetailSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSubscriptionViewController.swift; sourceTree = "<group>"; };
+		15BD65EE280BE817008998A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15DD44FD280A70090048F21A /* Submarine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Submarine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DD4500280A70090048F21A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15DD4502280A70090048F21A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		15DD4504280A70090048F21A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		15DD4507280A70090048F21A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15DD450A280A70090048F21A /* Submarine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Submarine.xcdatamodel; sourceTree = "<group>"; };
 		15DD450C280A70100048F21A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15DD450F280A70100048F21A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15DD4511280A70100048F21A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E2F28B280AB8EE006A4AB9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,12 +60,67 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15EEC666280AAF4A00C3464D /* FirebaseAuth in Frameworks */,
+				15EEC668280AAF4B00C3464D /* FirebaseFirestore in Frameworks */,
+				15EEC66A280AAF4B00C3464D /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		155F95CF281D187900DC4E7E /* App and Scene Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				15DD4500280A70090048F21A /* AppDelegate.swift */,
+				15DD4502280A70090048F21A /* SceneDelegate.swift */,
+			);
+			path = "App and Scene Delegate";
+			sourceTree = "<group>";
+		};
+		155F95D0281D18A100DC4E7E /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				15DD4506280A70090048F21A /* Main.storyboard */,
+				15DD450E280A70100048F21A /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		155F95D1281D18CF00DC4E7E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				15A71D4F281B986F008E4A19 /* User.swift */,
+				15E2F28B280AB8EE006A4AB9 /* Subscription.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		155F95D2281D18E900DC4E7E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */,
+				15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */,
+				1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */,
+				15B4D0942824A1520013D1B7 /* AddSubscriptionViewController.swift */,
+				15B4D0982824B4BE0013D1B7 /* IconAPIViewController.swift */,
+				15B4D09A2824CB140013D1B7 /* DetailSubscriptionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		15A71D4C280BF961008E4A19 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				15DD4509280A70090048F21A /* Submarine.xcdatamodeld */,
+				15BD65EE280BE817008998A1 /* GoogleService-Info.plist */,
+				15A71D4D280BF977008E4A19 /* FirebaseController.swift */,
+				15B4D0902823B4070013D1B7 /* MulticastDelegate.swift */,
+				15B4D0922823B4AA0013D1B7 /* DatabaseProtocol.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		15DD44F4280A70090048F21A = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +140,14 @@
 		15DD44FF280A70090048F21A /* Submarine */ = {
 			isa = PBXGroup;
 			children = (
-				15DD4500280A70090048F21A /* AppDelegate.swift */,
-				15DD4502280A70090048F21A /* SceneDelegate.swift */,
-				15DD4504280A70090048F21A /* ViewController.swift */,
-				15DD4506280A70090048F21A /* Main.storyboard */,
-				15DD450C280A70100048F21A /* Assets.xcassets */,
-				15DD450E280A70100048F21A /* LaunchScreen.storyboard */,
+				15B4D0962824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift */,
 				15DD4511280A70100048F21A /* Info.plist */,
-				15DD4509280A70090048F21A /* Submarine.xcdatamodeld */,
+				15A71D4C280BF961008E4A19 /* Firebase */,
+				155F95CF281D187900DC4E7E /* App and Scene Delegate */,
+				155F95D0281D18A100DC4E7E /* StoryBoards */,
+				15DD450C280A70100048F21A /* Assets.xcassets */,
+				155F95D1281D18CF00DC4E7E /* Classes */,
+				155F95D2281D18E900DC4E7E /* ViewControllers */,
 			);
 			path = Submarine;
 			sourceTree = "<group>";
@@ -86,6 +168,11 @@
 			dependencies = (
 			);
 			name = Submarine;
+			packageProductDependencies = (
+				15EEC665280AAF4A00C3464D /* FirebaseAuth */,
+				15EEC667280AAF4B00C3464D /* FirebaseFirestore */,
+				15EEC669280AAF4B00C3464D /* FirebaseFirestoreSwift */,
+			);
 			productName = Submarine;
 			productReference = 15DD44FD280A70090048F21A /* Submarine.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +201,9 @@
 				Base,
 			);
 			mainGroup = 15DD44F4280A70090048F21A;
+			packageReferences = (
+				15EEC664280AAF4A00C3464D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 15DD44FE280A70090048F21A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15DD4510280A70100048F21A /* LaunchScreen.storyboard in Resources */,
+				15BD65EF280BE818008998A1 /* GoogleService-Info.plist in Resources */,
 				15DD450D280A70100048F21A /* Assets.xcassets in Resources */,
 				15DD4508280A70090048F21A /* Main.storyboard in Resources */,
 			);
@@ -141,10 +232,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B4D09B2824CB140013D1B7 /* DetailSubscriptionViewController.swift in Sources */,
+				15A71D4E280BF977008E4A19 /* FirebaseController.swift in Sources */,
 				15DD450B280A70090048F21A /* Submarine.xcdatamodeld in Sources */,
-				15DD4505280A70090048F21A /* ViewController.swift in Sources */,
+				15E2F28C280AB8EE006A4AB9 /* Subscription.swift in Sources */,
+				15B4D0952824A1520013D1B7 /* AddSubscriptionViewController.swift in Sources */,
+				15B4D0992824B4BE0013D1B7 /* IconAPIViewController.swift in Sources */,
+				1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */,
+				15E2F295280B9EB4006A4AB9 /* LoginViewController.swift in Sources */,
+				15B4D0932823B4AA0013D1B7 /* DatabaseProtocol.swift in Sources */,
+				15A71D50281B986F008E4A19 /* User.swift in Sources */,
+				153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */,
+				15B4D0912823B4070013D1B7 /* MulticastDelegate.swift in Sources */,
 				15DD4501280A70090048F21A /* AppDelegate.swift in Sources */,
 				15DD4503280A70090048F21A /* SceneDelegate.swift in Sources */,
+				15B4D0972824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +462,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		15EEC664280AAF4A00C3464D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15EEC665280AAF4A00C3464D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15EEC664280AAF4A00C3464D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		15EEC667280AAF4B00C3464D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15EEC664280AAF4A00C3464D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		15EEC669280AAF4B00C3464D /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15EEC664280AAF4A00C3464D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		15DD4509280A70090048F21A /* Submarine.xcdatamodeld */ = {
