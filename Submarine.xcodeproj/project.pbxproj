@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151B13302825022500335D6E /* IconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B132F2825022500335D6E /* IconData.swift */; };
+		151B13322825029100335D6E /* VolumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B13312825029100335D6E /* VolumeData.swift */; };
+		151B133428276C4900335D6E /* imageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B133328276C4900335D6E /* imageView.swift */; };
+		151B13362827759D00335D6E /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B13352827759D00335D6E /* IconCollectionViewCell.swift */; };
 		1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */; };
 		153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */; };
 		15A71D4E280BF977008E4A19 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A71D4D280BF977008E4A19 /* FirebaseController.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		151B132F2825022500335D6E /* IconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconData.swift; sourceTree = "<group>"; };
+		151B13312825029100335D6E /* VolumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeData.swift; sourceTree = "<group>"; };
+		151B133328276C4900335D6E /* imageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageView.swift; sourceTree = "<group>"; };
+		151B13352827759D00335D6E /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
 		153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customSubscriptionTableViewCell.swift; sourceTree = "<group>"; };
 		15A71D4D280BF977008E4A19 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,8 @@
 			children = (
 				15A71D4F281B986F008E4A19 /* User.swift */,
 				15E2F28B280AB8EE006A4AB9 /* Subscription.swift */,
+				151B132F2825022500335D6E /* IconData.swift */,
+				151B13312825029100335D6E /* VolumeData.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -105,6 +115,7 @@
 				15B4D0942824A1520013D1B7 /* AddSubscriptionViewController.swift */,
 				15B4D0982824B4BE0013D1B7 /* IconAPIViewController.swift */,
 				15B4D09A2824CB140013D1B7 /* DetailSubscriptionViewController.swift */,
+				151B13352827759D00335D6E /* IconCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -141,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				15B4D0962824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift */,
+				151B133328276C4900335D6E /* imageView.swift */,
 				15DD4511280A70100048F21A /* Info.plist */,
 				15A71D4C280BF961008E4A19 /* Firebase */,
 				155F95CF281D187900DC4E7E /* App and Scene Delegate */,
@@ -239,13 +251,17 @@
 				15B4D0952824A1520013D1B7 /* AddSubscriptionViewController.swift in Sources */,
 				15B4D0992824B4BE0013D1B7 /* IconAPIViewController.swift in Sources */,
 				1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */,
+				151B13322825029100335D6E /* VolumeData.swift in Sources */,
 				15E2F295280B9EB4006A4AB9 /* LoginViewController.swift in Sources */,
 				15B4D0932823B4AA0013D1B7 /* DatabaseProtocol.swift in Sources */,
 				15A71D50281B986F008E4A19 /* User.swift in Sources */,
+				151B13362827759D00335D6E /* IconCollectionViewCell.swift in Sources */,
 				153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */,
 				15B4D0912823B4070013D1B7 /* MulticastDelegate.swift in Sources */,
+				151B13302825022500335D6E /* IconData.swift in Sources */,
 				15DD4501280A70090048F21A /* AppDelegate.swift in Sources */,
 				15DD4503280A70090048F21A /* SceneDelegate.swift in Sources */,
+				151B133428276C4900335D6E /* imageView.swift in Sources */,
 				15B4D0972824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

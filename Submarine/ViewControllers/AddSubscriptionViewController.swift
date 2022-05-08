@@ -7,19 +7,25 @@
 
 import UIKit
 
-class AddSubscriptionViewController: UIViewController {
+class AddSubscriptionViewController: UIViewController, sendIconProtocol {
+    func sendIconBack(icon: UIImage) {
+        self.imageView.image = icon
+    }
     
     weak var databaseController: DatabaseProtocol?
+    var icon: UIImage?
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var recurrenceSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        loadIcon()
     }
     
     @IBAction func createSubscription(_ sender: Any) {
@@ -33,43 +39,42 @@ class AddSubscriptionViewController: UIViewController {
             if price.isEmpty {
                 errorMsg += "- Must provide price"
             }
+            if icon == nil{
+                errorMsg += "- Must provide Icon"
+
+            }
             displayMessage(title: "Not all fields filled", message: errorMsg)
             return
         }
        // getIcon(name: name)
-        let _ = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, recurrence: recurrence.rawValue)
+        
+
+
+        let sub = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, recurrence: recurrence.rawValue)
+        guard let image = imageView.image else {return}
+        imageView.saveJpg(image, id: (sub?.id)!) //saves the image with the Firebase ID
         navigationController?.popViewController(animated: true)
     }
-    
-//    func getIcon(name: String) -> Data {
-        /*
-         Store the image returned from API
-        */
-        
-//        // Obtaining the Location of the Documents Directory
-//        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//
-//        // Create URL
-//        let url = documents.appendingPathComponent(name + ".png")
-//
-//        // Convert to Data
-//        if let data = image.pngData() {
-//            do {
-//                try data.write(to: url)
-//            } catch {
-//                print("Unable to Write Image Data to Disk")
-//            }
-//        }
-//    }
+    func loadIcon(){
+        //1231231
+        //let image = imageView.loadFile(fileName: "1231231.jpg")
+        if icon != nil {
+            imageView.image = icon
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "changeIconSegue"{
+            let destination = segue.destination as! IconAPIViewController
+            destination.delegate = self
+        }
     }
-    */
+    
 
 }

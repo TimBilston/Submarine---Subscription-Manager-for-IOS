@@ -59,7 +59,7 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         let subscription = allSubscriptions[indexPath.row]
         cell.subName.text = subscription.name
         cell.subPrice.text = String(format: "%.2f", subscription.price!)
-        
+        cell.subLogo.image = cell.subLogo.loadFile(fileName: subscription.id! + ".jpg")
         return cell
     }
     
