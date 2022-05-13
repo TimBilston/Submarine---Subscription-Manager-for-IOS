@@ -25,21 +25,10 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        authHandle = authController.addStateDidChangeListener { (auth, user) in
-            // The auth state has changed. A user has either been signed in or signed out
-            if Auth.auth().currentUser != nil {
-                // User is signed in.
-                print("user is signed in")
-                self.LoggedInRedirect()
-            } else {
-                print("user is not signed in")
-                // No user is signed in.
-            }
-        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        authController.removeStateDidChangeListener(authHandle!)
+        //authController.removeStateDidChangeListener(authHandle!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150DE6DC282E31F5005406DE /* expensesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150DE6DB282E31F5005406DE /* expensesButton.swift */; };
 		151B13302825022500335D6E /* IconData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B132F2825022500335D6E /* IconData.swift */; };
 		151B13322825029100335D6E /* VolumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B13312825029100335D6E /* VolumeData.swift */; };
 		151B133428276C4900335D6E /* imageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151B133328276C4900335D6E /* imageView.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		150DE6DB282E31F5005406DE /* expensesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expensesButton.swift; sourceTree = "<group>"; };
 		151B132F2825022500335D6E /* IconData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconData.swift; sourceTree = "<group>"; };
 		151B13312825029100335D6E /* VolumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeData.swift; sourceTree = "<group>"; };
 		151B133328276C4900335D6E /* imageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		15DD44FF280A70090048F21A /* Submarine */ = {
 			isa = PBXGroup;
 			children = (
+				150DE6DB282E31F5005406DE /* expensesButton.swift */,
 				15B4D0962824A1CB0013D1B7 /* UIViewControllerDisplayMessage.swift */,
 				151B133328276C4900335D6E /* imageView.swift */,
 				15DD4511280A70100048F21A /* Info.plist */,
@@ -258,6 +261,7 @@
 				151B13362827759D00335D6E /* IconCollectionViewCell.swift in Sources */,
 				153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */,
 				15B4D0912823B4070013D1B7 /* MulticastDelegate.swift in Sources */,
+				150DE6DC282E31F5005406DE /* expensesButton.swift in Sources */,
 				151B13302825022500335D6E /* IconData.swift in Sources */,
 				15DD4501280A70090048F21A /* AppDelegate.swift in Sources */,
 				15DD4503280A70090048F21A /* SceneDelegate.swift in Sources */,

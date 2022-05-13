@@ -18,8 +18,8 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func onSubscriptionsChange(change: DatabaseChange, subscriptions: [Subscription]) {
         allSubscriptions = subscriptions
+        allSubscriptions = allSubscriptions.sorted(by: { String($0.getDaysToPayment()) > String($1.getDaysToPayment()) })
         tableView.reloadData()
-
     }
     
     weak var databaseController: DatabaseProtocol?
@@ -31,6 +31,7 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        allSubscriptions = allSubscriptions.sorted(by: { String($0.getDaysToPayment()) > String($1.getDaysToPayment()) })
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +52,7 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         return 60
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subscriptionCell") as! customSubscriptionTableViewCell
         
@@ -58,8 +60,10 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         // Configure the cell...
         let subscription = allSubscriptions[indexPath.row]
         cell.subName.text = subscription.name
-        cell.subPrice.text = String(format: "%.2f", subscription.price!)
-        cell.subLogo.image = cell.subLogo.loadFile(fileName: subscription.id! + ".jpg")
+        cell.subPrice.text = "$" + String(format: "%.2f", subscription.price!)
+        cell.subLogo.image = cell.subLogo.loadFile(fileName: subscription.id! + ".png")
+        cell.startDate.text = String(subscription.getDaysToPayment()) + " day(s)"
+
         return cell
     }
     
@@ -79,4 +83,5 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
             destination.subscriptionData = selectedSubscription
         }
     }
+
 }

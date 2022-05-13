@@ -13,6 +13,7 @@ class customSubscriptionTableViewCell: UITableViewCell {
     @IBOutlet weak var subName: UILabel!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var subPrice: UILabel!
+    @IBOutlet weak var startDate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

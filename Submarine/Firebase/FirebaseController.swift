@@ -24,6 +24,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     override init(){
         
         database = Firestore.firestore()
+        
         authController = Auth.auth()
         usersRef = database.collection("users")
         
@@ -72,18 +73,20 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
-    func addSubscription(name: String, price : Double, recurrence: Int) -> Subscription{
+    func addSubscription(name: String, price : Double, recurrence: Int, startDate: String) -> Subscription{
         let subscription = Subscription()
         subscription.name = name
         subscription.price = price
         subscription.recurrence = recurrence
+        subscription.startDate = startDate
+
         //Once created add to firestore
         do{
             if let subscriptionsRef = try subscriptionsRef?.addDocument(from: subscription) {
                 subscription.id = subscriptionsRef.documentID
             }
         } catch{
-            print("Failed to serialize hero")
+            print("Failed to serialize Subscription")
         }
         return subscription
     }
@@ -178,29 +181,12 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
         }
     }
-//    func setupSubscriptionListener(uid: String){
-//        database.collection("users").document(uid).collection("subscriptions")
-//            .addSnapshotListener { querySnapshot, error in
-//                guard let documents = querySnapshot?.documents else {
-//                    print("Error fetching documents: \(error!)")
-//                    return
-//                }
-//                for subscription in documents{
-//                    let data = subscription.data()
-//                    let id = subscription.documentID
-//                    let name = data["name"] as! String
-//                    let price = data["price"] as! Double
-//                    let recurrence = data["recurrence"] as! Int
-//                    self.subscriptions.append(Subscription(id:id,name:name,price:price,recurrence:recurrence))
-//                }
-//            }
-//    }
     
     func authListener(){
         authHandle = authController!.addStateDidChangeListener { (auth, user) in
             //the auth state has changed
             let user = Auth.auth().currentUser
-            if let user = user { //THIS DOESNT BIND PROPERLY IDK WHY NOT
+            if let user = user {
                 // The user's ID, unique to the Firebase project.
                 let uid = user.uid
                 self.uid = uid
@@ -219,7 +205,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
                     }
                     self.subscriptionsRef = docRef.collection("subscriptions")
                     self.setupUserListener()
-                }                
+                }
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                
+                // This is to get the SceneDelegate object from your view controller
+                // then call the change root view controller function to change to main tab bar
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
             }
         }
     }

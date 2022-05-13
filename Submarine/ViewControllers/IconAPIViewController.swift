@@ -162,6 +162,7 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
             guard let image = cell.cellImageView else { return }
             
             self.delegate?.sendIconBack(icon: image.image!)
+            
             dismiss(animated: true, completion: nil)
 
         }

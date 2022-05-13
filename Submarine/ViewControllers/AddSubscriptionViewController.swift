@@ -18,10 +18,11 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var recurrenceSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        startDatePicker.maximumDate = Date.now
         // Do any additional setup after loading the view.
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
@@ -29,7 +30,7 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
     }
     
     @IBAction func createSubscription(_ sender: Any) {
-        guard let name = nameTextField.text, let price = priceTextField.text, let recurrence = Recurrence(rawValue: Int(recurrenceSegmentedControl.selectedSegmentIndex)) else {
+        guard let name = nameTextField.text, let price = priceTextField.text, let recurrence = Recurrence(rawValue: Int(recurrenceSegmentedControl.selectedSegmentIndex)), let startDate = startDatePicker else {
             return
         }
         if name.isEmpty || price.isEmpty {
@@ -39,20 +40,21 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
             if price.isEmpty {
                 errorMsg += "- Must provide price"
             }
-            if icon == nil{
+            if imageView.image == nil{
                 errorMsg += "- Must provide Icon"
-
             }
+            
             displayMessage(title: "Not all fields filled", message: errorMsg)
             return
         }
-       // getIcon(name: name)
+       
+        let dateFormatter = DateFormatter()    // Create Date Formatter
+        dateFormatter.dateFormat = "YY/MM/dd" // Set Date Format
+        let startDateString  = dateFormatter.string(from: startDate.date)  // Convert Date to String
         
-
-
-        let sub = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, recurrence: recurrence.rawValue)
+        let sub = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, recurrence: recurrence.rawValue, startDate: startDateString)
         guard let image = imageView.image else {return}
-        imageView.saveJpg(image, id: (sub?.id)!) //saves the image with the Firebase ID
+        imageView.savePng(image, id: (sub?.id)!) //saves the image with the Firebase ID
         navigationController?.popViewController(animated: true)
     }
     func loadIcon(){
