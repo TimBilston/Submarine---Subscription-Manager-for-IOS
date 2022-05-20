@@ -26,3 +26,4 @@ class customSubscriptionTableViewCell: UITableViewCell {
     }
 
 }
+

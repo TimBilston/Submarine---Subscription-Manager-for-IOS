@@ -73,10 +73,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
-    func addSubscription(name: String, price : Double, recurrence: Int, startDate: String) -> Subscription{
+    func addSubscription(name: String, price : Double, category: SubscriptionCategory, recurrence: Int, startDate: String) -> Subscription{
         let subscription = Subscription()
         subscription.name = name
         subscription.price = price
+        subscription.category = category
         subscription.recurrence = recurrence
         subscription.startDate = startDate
 
@@ -84,6 +85,18 @@ class FirebaseController: NSObject, DatabaseProtocol {
         do{
             if let subscriptionsRef = try subscriptionsRef?.addDocument(from: subscription) {
                 subscription.id = subscriptionsRef.documentID
+            }
+        } catch{
+            print("Failed to serialize Subscription")
+        }
+        return subscription
+    }
+    func editSubscription(subscription: Subscription) -> Subscription {
+
+        //Once created add to firestore
+        do{
+            if (try subscriptionsRef?.document(subscription.id!).setData(from: subscription)) != nil {
+                print("successful serialise of subscription")
             }
         } catch{
             print("Failed to serialize Subscription")
@@ -98,7 +111,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
     func cleanup() {
         
     }
-    
     func getSubscriptionByID(id: String) -> Subscription?{
         for subscription in subscriptions {
             if subscription.id == id{

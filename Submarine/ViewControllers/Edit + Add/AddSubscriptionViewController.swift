@@ -20,6 +20,13 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
     @IBOutlet weak var recurrenceSegmentedControl: UISegmentedControl!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    var category: SubscriptionCategory?
+    
+    @IBAction func changeCategory(_ sender: Any) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         startDatePicker.maximumDate = Date.now
@@ -30,7 +37,7 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
     }
     
     @IBAction func createSubscription(_ sender: Any) {
-        guard let name = nameTextField.text, let price = priceTextField.text, let recurrence = Recurrence(rawValue: Int(recurrenceSegmentedControl.selectedSegmentIndex)), let startDate = startDatePicker else {
+        guard let name = nameTextField.text, let price = priceTextField.text, let category = category, let recurrence = Recurrence(rawValue: Int(recurrenceSegmentedControl.selectedSegmentIndex)), let startDate = startDatePicker else {
             return
         }
         if name.isEmpty || price.isEmpty {
@@ -52,7 +59,7 @@ class AddSubscriptionViewController: UIViewController, sendIconProtocol {
         dateFormatter.dateFormat = "YY/MM/dd" // Set Date Format
         let startDateString  = dateFormatter.string(from: startDate.date)  // Convert Date to String
         
-        let sub = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, recurrence: recurrence.rawValue, startDate: startDateString)
+        let sub = databaseController?.addSubscription(name: name, price: Double(price) ?? 0.0, category: category, recurrence: recurrence.rawValue, startDate: startDateString)
         guard let image = imageView.image else {return}
         imageView.savePng(image, id: (sub?.id)!) //saves the image with the Firebase ID
         navigationController?.popViewController(animated: true)

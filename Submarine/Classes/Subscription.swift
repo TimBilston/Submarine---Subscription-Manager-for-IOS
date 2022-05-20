@@ -23,6 +23,7 @@ class Subscription: NSObject, Codable{
     var imageRef: String?
     var colour: UIColor?
     var startDate: String?
+    var category: SubscriptionCategory?
         
     enum CodingKeys: String, CodingKey {
         case id

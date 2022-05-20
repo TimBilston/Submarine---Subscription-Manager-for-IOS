@@ -33,7 +33,8 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     
-    func addSubscription(name: String, price : Double, recurrence: Int, startDate: String) -> Subscription
+    func addSubscription(name: String, price : Double, category: SubscriptionCategory, recurrence: Int, startDate: String) -> Subscription
+    func editSubscription(subscription: Subscription) -> Subscription
     func deleteSubscription(subscription: Subscription)
     
 }
