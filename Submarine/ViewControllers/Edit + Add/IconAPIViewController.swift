@@ -32,8 +32,6 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
         searchBar.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.allowsSelection = true
-        collectionView.allowsFocus = true
         collectionView.reloadData()
         
         // Add a loading indicator view
@@ -66,7 +64,7 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
             "Authorization": "Bearer X0vjEUN6KRlxbp2DoUkyHeM0VOmxY91rA6BbU5j3Xu6wDodwS0McmilLPBWDUcJ1"
         ]
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.iconfinder.com/v4/icons/search?query=" + searchTerm + "&count=60")! as URL,cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.iconfinder.com/v4/icons/search?query=" + searchTerm + "&count=30")! as URL,cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         
@@ -109,6 +107,7 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        collectionView.allowsSelection = true
         return 1
     }
     
@@ -118,7 +117,6 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "logoViewCell", for: indexPath) as! IconCollectionViewCell
-        
         //cell.backgroundColor = .black
         if iconIds?[indexPath.row] != nil{
             let headers = [
@@ -160,8 +158,8 @@ class IconAPIViewController: UIViewController, UISearchBarDelegate, UICollection
                 return
             }
             guard let image = cell.cellImageView else { return }
-            
-            self.delegate?.sendIconBack(icon: image.image!)
+            guard let imageFile = image.image else {return}
+            self.delegate?.sendIconBack(icon: imageFile)
             
             dismiss(animated: true, completion: nil)
 

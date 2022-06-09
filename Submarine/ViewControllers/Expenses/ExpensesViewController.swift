@@ -17,21 +17,77 @@ class ExpensesViewController: UIViewController, DatabaseListener, SegueHandler{
         self.performSegue(withIdentifier: identifier, sender: self)
     }
     var selectedSubscription: Subscription?
-    var listenerType = ListenerType.subscriptions
+    var listenerType = ListenerType.subCat
     var allSubscriptions: [Subscription] = []
+    var categoryList: [SubscriptionCategory] = []
+    
     var tableViewController: ExpensesTableViewController?
     weak var databaseController: DatabaseProtocol?
-    
+
+    @IBOutlet weak var monthlyExpensesView: UIView!
+    @IBOutlet weak var categorySwitch: UISwitch!
+    @IBAction func switchValueChanged(_ sender: Any) {
+        guard let tbVC = tableViewController else{
+            return
+        }
+        if (categorySwitch.isOn){
+            tbVC.switchedToCategories()
+        }
+        else{
+            tbVC.switchedToSubscriptions()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        monthlyExpensesView.layer.cornerRadius = 5
+        monthlyExpensesView.layer.masksToBounds = true;
+        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
         tableViewController = self.children.first as? ExpensesTableViewController
         tableViewController?.allSubscriptions = allSubscriptions
+        tableViewController?.allCategories = categoryList
+        tableViewController?.frequency = frequencySegmentedControl.selectedSegmentIndex
         tableViewController?.tableView.reloadData()
         tableViewController?.delegate = self
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBOutlet weak var totalFrequencyLabel: UILabel!
+    @IBOutlet weak var totalCostFrequency: UILabel!
+    @IBOutlet weak var frequencySegmentedControl: UISegmentedControl!
+    @IBAction func frequencyChanged(_ sender: Any) {
+        guard let tbVC = tableViewController else{
+            return
+        }
+        var cost = 0.00;
+        switch frequencySegmentedControl.selectedSegmentIndex{
+        case 0: //weekly
+            totalFrequencyLabel.text = "Total Weekly Cost"
+            for subscription in allSubscriptions {
+                cost += subscription.getWeeklyCost()
+            }
+        case 1: //weekly
+            totalFrequencyLabel.text = "Total Monthly Cost"
+            for subscription in allSubscriptions {
+                cost += subscription.getMonthlyCost()
+            }
+        case 2: //weekly
+            totalFrequencyLabel.text = "Total Yearly Cost"
+            for subscription in allSubscriptions {
+                cost += subscription.getYearlyCost()
+            }
+        default:
+            break
+        }
+        totalCostFrequency.text = "$" + String(format: "%.2f", cost)
+        
+        tbVC.frequency = frequencySegmentedControl.selectedSegmentIndex
+        tbVC.tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,9 +99,17 @@ class ExpensesViewController: UIViewController, DatabaseListener, SegueHandler{
         databaseController?.removeListener(listener: self)
     }
     func onUserChange(change: DatabaseChange, userProperties: User) {
-        //die
+        //nothing
     }
-    
+    func onCategoriesChange(change: DatabaseChange, categories: [SubscriptionCategory]) {
+        categoryList = categories
+        guard let tbVC = tableViewController else{
+            return
+        }
+        tbVC.allCategories = categoryList
+        tbVC.tableView.reloadData()
+    }
+
     func onSubscriptionsChange(change: DatabaseChange, subscriptions: [Subscription]) {
         allSubscriptions = subscriptions
         guard let tbVC = tableViewController else{

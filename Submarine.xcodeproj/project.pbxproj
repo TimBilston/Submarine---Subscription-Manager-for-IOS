@@ -17,6 +17,10 @@
 		1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */; };
 		153E6776280A763A005C5081 /* customSubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */; };
 		156722F028375E8B001A46DF /* SubscriptionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156722EF28375E8B001A46DF /* SubscriptionCategory.swift */; };
+		156722F2283771DD001A46DF /* CategoryChangeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156722F1283771DD001A46DF /* CategoryChangeTableViewController.swift */; };
+		1578B31A28407CD000CF8B88 /* ExpenseDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578B31928407CD000CF8B88 /* ExpenseDataViewController.swift */; };
+		1578B31C284861EF00CF8B88 /* AlertChangeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578B31B284861EF00CF8B88 /* AlertChangeTableViewController.swift */; };
+		1578B31E2851C5DB00CF8B88 /* dateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578B31D2851C5DA00CF8B88 /* dateExtension.swift */; };
 		15A71D4E280BF977008E4A19 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A71D4D280BF977008E4A19 /* FirebaseController.swift */; };
 		15A71D50281B986F008E4A19 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A71D4F281B986F008E4A19 /* User.swift */; };
 		15B4D0912823B4070013D1B7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B4D0902823B4070013D1B7 /* MulticastDelegate.swift */; };
@@ -37,6 +41,8 @@
 		15EEC666280AAF4A00C3464D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC665280AAF4A00C3464D /* FirebaseAuth */; };
 		15EEC668280AAF4B00C3464D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC667280AAF4B00C3464D /* FirebaseFirestore */; };
 		15EEC66A280AAF4B00C3464D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15EEC669280AAF4B00C3464D /* FirebaseFirestoreSwift */; };
+		15FC78552852203000F4878A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC78542852203000F4878A /* SignUpViewController.swift */; };
+		15FC7858285222EA00F4878A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FC7857285222EA00F4878A /* ResetPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,10 @@
 		1526DE34280A820B00F21BC1 /* SubscriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsViewController.swift; sourceTree = "<group>"; };
 		153E6775280A763A005C5081 /* customSubscriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customSubscriptionTableViewCell.swift; sourceTree = "<group>"; };
 		156722EF28375E8B001A46DF /* SubscriptionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCategory.swift; sourceTree = SOURCE_ROOT; };
+		156722F1283771DD001A46DF /* CategoryChangeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChangeTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		1578B31928407CD000CF8B88 /* ExpenseDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDataViewController.swift; sourceTree = SOURCE_ROOT; };
+		1578B31B284861EF00CF8B88 /* AlertChangeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertChangeTableViewController.swift; sourceTree = "<group>"; };
+		1578B31D2851C5DA00CF8B88 /* dateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateExtension.swift; sourceTree = "<group>"; };
 		15A71D4D280BF977008E4A19 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		15A71D4F281B986F008E4A19 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15B4D0902823B4070013D1B7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +79,8 @@
 		15DD4511280A70100048F21A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E2F28B280AB8EE006A4AB9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		15FC78542852203000F4878A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		15FC7857285222EA00F4878A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,7 @@
 		150DE6EB283091CB005406DE /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
+				1578B31928407CD000CF8B88 /* ExpenseDataViewController.swift */,
 				150DE6DD282E4970005406DE /* ExpensesViewController.swift */,
 				150DE6DF282E498E005406DE /* ExpensesTableViewController.swift */,
 				150DE6E3282F526D005406DE /* ExpensesTableViewCell.swift */,
@@ -107,6 +120,8 @@
 		150DE6ED283091FC005406DE /* Edit + Add */ = {
 			isa = PBXGroup;
 			children = (
+				156722F1283771DD001A46DF /* CategoryChangeTableViewController.swift */,
+				1578B31B284861EF00CF8B88 /* AlertChangeTableViewController.swift */,
 				151B13352827759D00335D6E /* IconCollectionViewCell.swift */,
 				15B4D0942824A1520013D1B7 /* AddSubscriptionViewController.swift */,
 				15B4D09A2824CB140013D1B7 /* DetailSubscriptionViewController.swift */,
@@ -151,7 +166,7 @@
 				150DE6ED283091FC005406DE /* Edit + Add */,
 				150DE6EC283091D3005406DE /* Subscriptions */,
 				150DE6EB283091CB005406DE /* Expenses */,
-				15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */,
+				15FC78562852204100F4878A /* Login */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -171,6 +186,7 @@
 		15DD44F4280A70090048F21A = {
 			isa = PBXGroup;
 			children = (
+				1578B31D2851C5DA00CF8B88 /* dateExtension.swift */,
 				15DD44FF280A70090048F21A /* Submarine */,
 				15DD44FE280A70090048F21A /* Products */,
 			);
@@ -198,6 +214,16 @@
 				155F95D2281D18E900DC4E7E /* ViewControllers */,
 			);
 			path = Submarine;
+			sourceTree = "<group>";
+		};
+		15FC78562852204100F4878A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				15FC7857285222EA00F4878A /* ResetPasswordViewController.swift */,
+				15FC78542852203000F4878A /* SignUpViewController.swift */,
+				15E2F294280B9EB4006A4AB9 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,18 +306,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1578B31E2851C5DB00CF8B88 /* dateExtension.swift in Sources */,
+				1578B31C284861EF00CF8B88 /* AlertChangeTableViewController.swift in Sources */,
+				15FC7858285222EA00F4878A /* ResetPasswordViewController.swift in Sources */,
 				15B4D09B2824CB140013D1B7 /* DetailSubscriptionViewController.swift in Sources */,
 				15A71D4E280BF977008E4A19 /* FirebaseController.swift in Sources */,
 				15DD450B280A70090048F21A /* Submarine.xcdatamodeld in Sources */,
 				15E2F28C280AB8EE006A4AB9 /* Subscription.swift in Sources */,
 				15B4D0952824A1520013D1B7 /* AddSubscriptionViewController.swift in Sources */,
+				156722F2283771DD001A46DF /* CategoryChangeTableViewController.swift in Sources */,
 				156722F028375E8B001A46DF /* SubscriptionCategory.swift in Sources */,
 				15B4D0992824B4BE0013D1B7 /* IconAPIViewController.swift in Sources */,
 				1526DE35280A820B00F21BC1 /* SubscriptionsViewController.swift in Sources */,
 				151B13322825029100335D6E /* VolumeData.swift in Sources */,
 				150DE6DE282E4970005406DE /* ExpensesViewController.swift in Sources */,
+				1578B31A28407CD000CF8B88 /* ExpenseDataViewController.swift in Sources */,
 				15E2F295280B9EB4006A4AB9 /* LoginViewController.swift in Sources */,
 				150DE6E0282E498E005406DE /* ExpensesTableViewController.swift in Sources */,
+				15FC78552852203000F4878A /* SignUpViewController.swift in Sources */,
 				150DE6E4282F526D005406DE /* ExpensesTableViewCell.swift in Sources */,
 				15B4D0932823B4AA0013D1B7 /* DatabaseProtocol.swift in Sources */,
 				15A71D50281B986F008E4A19 /* User.swift in Sources */,

@@ -25,6 +25,11 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        authHandle = Auth.auth().addStateDidChangeListener() {
+//            (auth, user) in
+//            guard user != nil else {return}
+//            //change root controller
+//        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -50,11 +55,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
-        print("sign up button clicked")
-        guard let username = username, let password = password else {
-            return
-        }
-        databaseController!.signUp(username: username, password: password)
+        
     }
     /*
      // MARK: - Navigation

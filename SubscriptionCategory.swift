@@ -8,8 +8,17 @@
 import UIKit
 import FirebaseFirestoreSwift
 
-class SubscriptionCategory: NSObject {
+class SubscriptionCategory: NSObject, Codable{
     @DocumentID var id: String?
-    var category: String?
-    
+    var name: String?
+    var totalPrice: Double?
+    override init() {
+        totalPrice = 0
+    }
+    func addtoPrice(price: Double){
+        if totalPrice == nil{
+            totalPrice = 0
+        }
+        totalPrice! += price
+    }
 }

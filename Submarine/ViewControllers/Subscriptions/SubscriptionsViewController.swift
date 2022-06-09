@@ -8,18 +8,29 @@
 import UIKit
 
 class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
+    
+    
+    @IBOutlet weak var monthlyBudgetUsedLabel: UILabel!
+    @IBOutlet weak var monthlyBudgetTotal: UILabel!
+    @IBOutlet weak var monthlyBudgetProgressBar: UIProgressView!
+    
     var listenerType = ListenerType.subscriptions
     var allSubscriptions: [Subscription] = []
     var selectedSubscription : Subscription?
-
+    var monthlyBudget : Double?
+    var monthlyBudgetUsed : Double?
+    
     func onUserChange(change: DatabaseChange, userProperties: User) {
         //nothing
     }
-    
+    func onCategoriesChange(change: DatabaseChange, categories: [SubscriptionCategory]) {
+        //nothing
+    }
     func onSubscriptionsChange(change: DatabaseChange, subscriptions: [Subscription]) {
         allSubscriptions = subscriptions
         allSubscriptions = allSubscriptions.sorted(by: { String($0.getDaysToPayment()) > String($1.getDaysToPayment()) })
         tableView.reloadData()
+        setupBudget()
     }
     
     weak var databaseController: DatabaseProtocol?
@@ -32,8 +43,22 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         allSubscriptions = allSubscriptions.sorted(by: { String($0.getDaysToPayment()) > String($1.getDaysToPayment()) })
-
+        setupBudget()
     }
+    
+    func setupBudget(){
+        monthlyBudget = 0
+        monthlyBudgetUsed = 0
+        for subscription in allSubscriptions {
+            monthlyBudget! += subscription.getMonthlyCost()
+            monthlyBudgetUsed! += subscription.getCostRemainingThisMonth()
+        }
+        monthlyBudgetTotal.text = "of " + String(format: "%.2f", monthlyBudget!)
+        monthlyBudgetUsedLabel.text = String(format: "%.2f", monthlyBudgetUsed!)
+        
+        monthlyBudgetProgressBar.progress = Float(monthlyBudgetUsed! / monthlyBudget!)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)

@@ -19,6 +19,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var subscriptionsRef : CollectionReference?
     var authHandle: AuthStateDidChangeListenerHandle?
     var subscriptions : [Subscription]
+    var categories : [SubscriptionCategory]
     var currentUser : User?
     var uid : String?
     override init(){
@@ -29,6 +30,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         usersRef = database.collection("users")
         
         subscriptions = [Subscription]()
+        categories = [SubscriptionCategory]()
+        
         super.init()
         authListener()
     }
@@ -58,14 +61,22 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
         }
     }
+    func resetPassword(email: String){
+        authController!.sendPasswordReset(withEmail: email) { error in
+           print(error)
+        }
+    }
     
     func addListener(listener: DatabaseListener){
         listeners.addDelegate(listener)
-        if listener.listenerType == .subscriptions || listener.listenerType == .all {
+        if listener.listenerType == .subscriptions || listener.listenerType == .subCat {
             listener.onSubscriptionsChange(change: .update, subscriptions: subscriptions)
         }
         if listener.listenerType == .user || listener.listenerType == .all {
             listener.onUserChange(change: .update, userProperties: currentUser!)
+        }
+        if listener.listenerType == .categories || listener.listenerType == .subCat {
+            listener.onCategoriesChange(change: .update, categories: categories)
         }
     }
     
@@ -73,14 +84,15 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.removeDelegate(listener)
     }
     
-    func addSubscription(name: String, price : Double, category: SubscriptionCategory, recurrence: Int, startDate: String) -> Subscription{
+    func addSubscription(name: String, price : Double, category: String, recurrence: Int, startDate: String, alert: Int) -> Subscription{
         let subscription = Subscription()
         subscription.name = name
         subscription.price = price
-        subscription.category = category
+        subscription.categoryName = category
         subscription.recurrence = recurrence
         subscription.startDate = startDate
-
+        subscription.alert = alert
+        
         //Once created add to firestore
         do{
             if let subscriptionsRef = try subscriptionsRef?.addDocument(from: subscription) {
@@ -119,6 +131,16 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         return nil
     }
+    func setCategoryPrices(){
+        for category in categories {
+            category.totalPrice = 0
+            for subscription in subscriptions {
+                if subscription.categoryName == category.name{
+                    category.addtoPrice(price: subscription.getYearlyCost())
+                }
+            }
+        }
+    }
     func setupSubscriptionListener(){
         //subscriptionsRef
         database.collection("users").document(self.uid!).collection("subscriptions").addSnapshotListener(){
@@ -130,6 +152,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.parseSubscriptionSnapshot(snapshot: querySnapshot)
         }
     }
+    func setupCategoryListener(){
+        database.collection("categories").addSnapshotListener() {
+            (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot else {
+                print("failed to fetch categories with error: \(String(describing: error))")
+                return
+            }
+            self.parseCategoriesSnapshot(snapshot: querySnapshot)
+            self.setCategoryPrices()
+        }
+    }
     func setupUserListener(){
         database.collection("users").document(self.uid!).addSnapshotListener {
             (querySnapshot, error) in
@@ -139,6 +172,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
             self.parseUserSnapshot(snapshot: querySnapshot)
             self.setupSubscriptionListener()
+            self.setupCategoryListener()
         }
     }
     func parseUserSnapshot(snapshot: DocumentSnapshot){
@@ -159,6 +193,37 @@ class FirebaseController: NSObject, DatabaseProtocol {
             if listener.listenerType == ListenerType.user ||
                 listener.listenerType == ListenerType.all {
                 listener.onUserChange(change: DatabaseChange.update, userProperties: currentUser!)
+            }
+        }
+    }
+    func parseCategoriesSnapshot(snapshot: QuerySnapshot){
+        snapshot.documentChanges.forEach{ (change) in
+            var parsedCategory: SubscriptionCategory?
+            do{
+                parsedCategory = try change.document.data(as: SubscriptionCategory.self)
+            }
+            catch{
+                print("Unable to decode Category")
+                return
+            }
+            guard let category = parsedCategory else {
+                print("Document doesn't exist")
+                return
+            }
+            if change.type == .added {
+                categories.append(category)
+            }
+            else if change.type == .modified {
+                categories[Int(change.oldIndex)] = category
+            }
+            else if change.type == .removed {
+                categories.remove(at: Int(change.oldIndex))
+            }
+            listeners.invoke { (listener) in
+                if listener.listenerType == ListenerType.categories ||
+                    listener.listenerType == ListenerType.all {
+                    listener.onCategoriesChange(change: .update, categories: categories)
+                }
             }
         }
     }
@@ -192,6 +257,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 }
             }
         }
+        self.setCategoryPrices()
     }
     
     func authListener(){

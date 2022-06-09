@@ -7,8 +7,29 @@
 
 import UIKit
 
-class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
+class DetailSubscriptionViewController: UIViewController, sendIconProtocol, sendCategoryProtocol, sendAlertProtocol {
     
+    func sendAlert(daysBefore: Int) {
+        self.alert = daysBefore
+        switch(daysBefore){
+        case 0:
+            self.alertLabel.text = "None"
+        case 1:
+            self.alertLabel.text = "Same day"
+        case 2:
+            self.alertLabel.text = "1 Day before"
+        case 3:
+            self.alertLabel.text = "2 Days before"
+        case 4:
+            self.alertLabel.text = "1 Week before"
+        default:
+            self.alertLabel.text = "Error"
+        }
+    }
+    
+    func sendCategory(category: SubscriptionCategory) {
+        self.categoryLabel.text = category.name
+    }
     func sendIconBack(icon: UIImage) {
         self.subLogo.image = icon
         smallIcon.image = icon
@@ -16,6 +37,7 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
     
     weak var databaseController: DatabaseProtocol?
     var subscriptionData: Subscription?
+    var alert: Int?
     
     @IBOutlet weak var subLogo: UIImageView!
     @IBOutlet weak var smallIcon: UIImageView!
@@ -24,6 +46,8 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
     @IBOutlet weak var recurrenceControl: UISegmentedControl!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var alertLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,22 +76,34 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
             firstBillingDate.date = startDate
         }
         recurrenceControl.selectedSegmentIndex = subscription.recurrence!
+        categoryLabel.text = subscription.categoryName
+        sendAlert(daysBefore: subscription.alert!)
     }
     @IBAction func viewExpenseData(_ sender: Any) {
     }
     @IBAction func deleteSubscription(_ sender: Any) {
-        guard let subscriptionData = subscriptionData else {
+        let alertController = UIAlertController(title: "Delete Subscription", message: "Are you sure you want to delete this subscription \n this action cannot be undone", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(_) in
+            print("Cancel Pressed")
             return
-        }
-        databaseController?.deleteSubscription(subscription: subscriptionData)
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(_) in
+            print("Delete Pressed")
+            guard let subscriptionData = self.subscriptionData else {
+                return
+            }
+            self.databaseController?.deleteSubscription(subscription: subscriptionData)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     @IBAction func saveSubscription(_ sender: Any) {
-        guard let name = nameField.text, let price = priceField.text, let recurrence = Recurrence(rawValue: Int(recurrenceControl.selectedSegmentIndex)), let startDate = firstBillingDate else {
+        guard let name = nameField.text, let price = priceField.text, let recurrence = Recurrence(rawValue: Int(recurrenceControl.selectedSegmentIndex)), let category = categoryLabel.text, let startDate = firstBillingDate else {
             return
         }
-        
-        
         if name.isEmpty || price.isEmpty {
             var errorMsg = "Please ensure all fields are filled:\n"
             if name.isEmpty {
@@ -87,7 +123,6 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
         dateFormatter.dateFormat = "YY/MM/dd" // Set Date Format
         let startDateString  = dateFormatter.string(from: startDate.date)  // Convert Date to String
     
-    
         guard let subscriptionData = subscriptionData else {
             return
         }
@@ -95,10 +130,12 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
         subscriptionData.price = Double(price) ?? 0.0
         subscriptionData.recurrence = recurrence.rawValue
         subscriptionData.startDate = startDateString
-        
+        subscriptionData.categoryName = category
+        subscriptionData.alert = alert
         let sub = databaseController?.editSubscription(subscription: subscriptionData)
         guard let image = subLogo.image else {return}
         subLogo.savePng(image, id: (sub?.id)!) //saves the image with the Firebase ID
+        sub?.setupNotification(timing: alert!)
         navigationController?.popViewController(animated: true)
     }
     
@@ -113,7 +150,17 @@ class DetailSubscriptionViewController: UIViewController, sendIconProtocol {
             let destination = segue.destination as! IconAPIViewController
             destination.delegate = self
         }
+        if segue.identifier == "changeCategorySegue"{
+            let destination = segue.destination as! CategoryChangeTableViewController
+            destination.delegate = self
+        }
+        if segue.identifier == "showExpenseDataSegue"{
+            let destination = segue.destination as! ExpenseDataViewController
+            destination.subscriptionData = subscriptionData
+        }
+        if segue.identifier == "changeAlertSegue"{
+            let destination = segue.destination as! AlertChangeTableViewController
+            destination.delegate = self
+        }
     }
-    
-    
 }
