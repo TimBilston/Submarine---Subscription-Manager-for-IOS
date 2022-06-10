@@ -1471,7 +1471,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Expenses" selectedImage="dollarsign.circle" catalog="system" id="HpQ-r2-UPr"/>
-                    <navigationItem key="navigationItem" title="Expenses" id="FGk-Go-tIX"/>
+                    <navigationItem key="navigationItem" title="Expenses" largeTitleDisplayMode="always" id="FGk-Go-tIX"/>
                     <connections>
                         <outlet property="categorySwitch" destination="MPx-xK-aSK" id="W76-vq-V7q"/>
                         <outlet property="frequencySegmentedControl" destination="8A2-ol-ohS" id="Wee-IN-H7m"/>
