@@ -28,7 +28,7 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func onSubscriptionsChange(change: DatabaseChange, subscriptions: [Subscription]) {
         allSubscriptions = subscriptions
-        allSubscriptions = allSubscriptions.sorted(by: { String($0.getDaysToPayment()) > String($1.getDaysToPayment()) })
+        allSubscriptions = allSubscriptions.sorted(by: { $0.getDaysToPayment() < $1.getDaysToPayment()})
         tableView.reloadData()
         setupBudget()
     }

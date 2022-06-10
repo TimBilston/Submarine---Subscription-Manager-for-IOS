@@ -41,7 +41,7 @@ class ExpensesViewController: UIViewController, DatabaseListener, SegueHandler{
         super.viewDidLoad()
         monthlyExpensesView.layer.cornerRadius = 5
         monthlyExpensesView.layer.masksToBounds = true;
-        
+        updateFrequencyNumbers()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
@@ -61,6 +61,9 @@ class ExpensesViewController: UIViewController, DatabaseListener, SegueHandler{
     @IBOutlet weak var totalCostFrequency: UILabel!
     @IBOutlet weak var frequencySegmentedControl: UISegmentedControl!
     @IBAction func frequencyChanged(_ sender: Any) {
+        updateFrequencyNumbers()
+    }
+    func updateFrequencyNumbers(){
         guard let tbVC = tableViewController else{
             return
         }
