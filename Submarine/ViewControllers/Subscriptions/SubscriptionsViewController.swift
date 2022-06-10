@@ -46,7 +46,7 @@ class SubscriptionsViewController: UIViewController, UITableViewDelegate, UITabl
         setupBudget()
     }
     
-    func setupBudget(){
+    func setupBudget(){ //intialise the budget values and the progress bar
         monthlyBudget = 0
         monthlyBudgetUsed = 0
         for subscription in allSubscriptions {

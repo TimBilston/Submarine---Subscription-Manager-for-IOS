@@ -52,6 +52,11 @@ class LoginViewController: UIViewController {
         let username = usernameField.text!
         let password = passwordField.text!
         databaseController!.login(username: username,password: password)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            if self.authController.currentUser == nil{
+                self.displayMessage(title: "Login Error", message: "Incorrect Username or Password:")
+            }
+        }
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
