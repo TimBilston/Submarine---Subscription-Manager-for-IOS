@@ -9,6 +9,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--About-->
+        <scene sceneID="xhd-ae-qN1">
+            <objects>
+                <viewController id="7NL-TL-n6F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="da4-g0-zUn">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Included 3rd Party Libraries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoe-O9-0ke">
+                                <rect key="frame" x="16" y="170" width="344" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firebase v9.1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1T-p5-VeD">
+                                <rect key="frame" x="16" y="222" width="269" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- Authentication and Database" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbD-PI-imJ">
+                                <rect key="frame" x="16" y="251" width="232" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jzV-h0-uAS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" largeTitleDisplayMode="always" id="dNQ-Y3-YAf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hd9-iC-3ud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="913.84615384615381" y="-1038.6255924170616"/>
+        </scene>
         <!--Subscriptions-->
         <scene sceneID="Ka8-LE-azL">
             <objects>
@@ -909,6 +948,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Overview" selectedImage="heart.circle" catalog="system" id="6ce-cC-2gG"/>
                     <navigationItem key="navigationItem" title="Subscriptions" largeTitleDisplayMode="always" id="55f-pP-PI3">
+                        <barButtonItem key="leftBarButtonItem" image="info" catalog="system" id="D57-sr-gVo">
+                            <connections>
+                                <segue destination="7NL-TL-n6F" kind="show" id="VK8-6D-LFZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="jEd-Az-twC">
                             <connections>
                                 <segue destination="dAv-Ca-7KD" kind="show" id="Quk-HI-gha"/>
@@ -1571,13 +1615,14 @@
         <segue reference="hWG-Wb-WL4"/>
         <segue reference="OYe-Jd-r3g"/>
         <segue reference="dlU-KJ-vhX"/>
-        <segue reference="rfp-d7-Sfd"/>
+        <segue reference="9OG-ii-GVW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="cube.box.fill" catalog="system" width="128" height="124"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="heart.circle" catalog="system" width="128" height="121"/>
+        <image name="info" catalog="system" width="93" height="128"/>
         <image name="key" catalog="system" width="86" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="secondaryLabelColor">
